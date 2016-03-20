@@ -10,38 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Movie
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for home.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class home : Window
     {
-        public MainWindow()
+        public home()
         {
             InitializeComponent();
             IniMyStuff();
         }
-        private void IniMyStuff()
+        public void IniMyStuff()
         {
-          
+            mediaElement.Source = new Uri("D:\\Koulu\\windows-harkka\\Coffeemaker.mp4");
+            mediaElement.Play();
         }
-
-        private void txtbUsername_TextChanged(object sender, TextChangedEventArgs e)
-        {
-           
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            home h1 = new home();
-            this.Close();         
-            h1.Show();
-        }  
-
-            }
-
+    }
 }
