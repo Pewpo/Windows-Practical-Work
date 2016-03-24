@@ -10,24 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-namespace Movie
+using Movie.BL;
+namespace Movie.Menu
 {
     /// <summary>
-    /// Interaction logic for home.xaml
+    /// Interaction logic for MovieManager.xaml
     /// </summary>
-    public partial class home : Window
+    public partial class MovieManager : UserControl, ISwitchable
     {
-        public home()
+        public MovieManager()
         {
             InitializeComponent();
-            IniMyStuff();
         }
-        public void IniMyStuff()
+
+        void ISwitchable.UtilizeState(object state)
         {
-            mediaElement.Source = new Uri("D:\\Koulu\\windows-harkka\\Coffeemaker.mp4");
-            mediaElement.Play();
+            throw new NotImplementedException();
         }
     }
 }

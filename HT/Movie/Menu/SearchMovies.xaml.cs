@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Movie.BL;
+
+namespace Movie.Menu
+{
+    /// <summary>
+    /// Interaction logic for SearchMovies.xaml
+    /// </summary>
+    public partial class SearchMovies : UserControl, ISwitchable
+    {
+        public SearchMovies()
+        {
+            InitializeComponent();
+        }
+
+        void ISwitchable.UtilizeState(object state)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

@@ -10,38 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Movie.BL;
 
-namespace Movie
+namespace Movie.Menu
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LogIn.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogIn : UserControl, ISwitchable
     {
-        public MainWindow()
+        public LogIn()
         {
             InitializeComponent();
-            IniMyStuff();
-        }
-        private void IniMyStuff()
-        {
-          
         }
 
-        private void txtbUsername_TextChanged(object sender, TextChangedEventArgs e)
+        public void UtilizeState(object state)
         {
-           
+            throw new NotImplementedException();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            home h1 = new home();
-            this.Close();         
-            h1.Show();
-        }  
-
-            }
-
+            Switcher.Switch(new Mainmenu());
+        }
+    }
 }
