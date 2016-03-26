@@ -69,8 +69,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BL\BLMain.cs" />
     <Compile Include="BL\ISwitchable.cs" />
     <Compile Include="BL\Switcher.cs" />
+    <Compile Include="DB\DBElokuvat.cs" />
     <Compile Include="Menu\AddMovie.xaml.cs">
       <DependentUpon>AddMovie.xaml</DependentUpon>
     </Compile>
@@ -81,11 +83,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menu\ModifyMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menu\MovieManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Menu\SearchMovies.xaml">
+    <Page Include="Menu\MovieSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\ShowMovie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,11 +108,17 @@
     <Compile Include="Menu\Mainmenu.xaml.cs">
       <DependentUpon>Mainmenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menu\ModifyMovie.xaml.cs">
+      <DependentUpon>ModifyMovie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu\MovieManager.xaml.cs">
       <DependentUpon>MovieManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Menu\SearchMovies.xaml.cs">
-      <DependentUpon>SearchMovies.xaml</DependentUpon>
+    <Compile Include="Menu\MovieSearch.xaml.cs">
+      <DependentUpon>MovieSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ShowMovie.xaml.cs">
+      <DependentUpon>ShowMovie.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageSwitcher.xaml.cs">
       <DependentUpon>PageSwitcher.xaml</DependentUpon>

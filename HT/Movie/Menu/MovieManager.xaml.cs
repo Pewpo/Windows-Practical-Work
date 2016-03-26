@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Movie.BL;
+using System.Data;
+
 namespace Movie.Menu
 {
     /// <summary>
@@ -23,11 +25,40 @@ namespace Movie.Menu
         public MovieManager()
         {
             InitializeComponent();
+            //IniMyStuff();
         }
-
+        private void IniMyStuff()
+        {
+            try
+            {
+               DataTable dt = BLMain.GetData();
+                dgAllMovies.ItemsSource = dt.DefaultView;
+                lbMessages.Content = "Tiedostojen haku onnistui";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
         void ISwitchable.UtilizeState(object state)
         {
             throw new NotImplementedException();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new AddMovie());
+        }
+
+        private void btnBackToMain_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Mainmenu());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new ModifyMovie());
         }
     }
 }

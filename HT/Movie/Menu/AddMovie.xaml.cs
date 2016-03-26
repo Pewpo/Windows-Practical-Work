@@ -12,17 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Movie.BL;
+
 
 namespace Movie.Menu
 {
     /// <summary>
     /// Interaction logic for AddMovie.xaml
     /// </summary>
-    public partial class AddMovie : UserControl
+    public partial class AddMovie : UserControl, ISwitchable
     {
         public AddMovie()
         {
             InitializeComponent();
+        }
+
+        public void UtilizeState(object state)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnBackToManager_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new MovieManager());
         }
     }
 }

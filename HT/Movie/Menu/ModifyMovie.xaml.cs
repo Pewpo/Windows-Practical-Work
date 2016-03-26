@@ -17,18 +17,23 @@ using Movie.BL;
 namespace Movie.Menu
 {
     /// <summary>
-    /// Interaction logic for SearchMovies.xaml
+    /// Interaction logic for ModifyMovie.xaml
     /// </summary>
-    public partial class SearchMovies : UserControl, ISwitchable
+    public partial class ModifyMovie : UserControl, ISwitchable
     {
-        public SearchMovies()
+        public ModifyMovie()
         {
             InitializeComponent();
         }
 
-        void ISwitchable.UtilizeState(object state)
+        public void UtilizeState(object state)
         {
             throw new NotImplementedException();
+        }
+
+        private void btnBackToManager_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new MovieManager());
         }
     }
 }

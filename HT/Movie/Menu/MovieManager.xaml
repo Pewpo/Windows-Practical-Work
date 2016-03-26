@@ -17,15 +17,18 @@
             </LinearGradientBrush>
         </Grid.Background>
         <StackPanel Orientation="Vertical">
-            <ComboBox Width="150" Height="35" HorizontalAlignment="Right" Margin="0,10,25,0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <TextBlock Text="Movie manager"  FontSize="25" FontWeight="Bold"  Margin="0,40,250,0"/>
+                <ComboBox Width="150" Height="35" HorizontalAlignment="Right" Margin="0,10,25,0" />
+            </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <DataGrid x:Name="dgAllMovies" Width="350" Margin="100"/>
-            <StackPanel  Width="350">
-                <Button Content="ADD" Margin="25,100,25,25" Height="80"/>
+            <DataGrid x:Name="dgAllMovies" Width="350" Margin="100"  AutoGenerateColumns="True" ItemsSource="{Binding}"/>
+            <StackPanel x:Name="btnAddMovie" Width="350">
+                <Button Content="ADD" Margin="25,100,25,25" Height="80" Click="Button_Click"/>
                 <Button Content="DELETE" Height="80" Margin="25,0,25,25"/>
-                <Button Content="MODIFY"  Height="80" Margin="25,0,25,25"/>
-                <Button Content="Back" Height="80" Margin="25,0,25,25"/>
+                <Button Content="MODIFY"  Height="80" Margin="25,0,25,25" Click="Button_Click_1"/>
+                <Button x:Name="btnBackToMain" Content="BACK" Height="80" Margin="25,0,25,25" Click="btnBackToMain_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel  VerticalAlignment="Bottom">
