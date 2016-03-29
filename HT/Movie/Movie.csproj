@@ -57,6 +57,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Menu\AddMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\LogIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -65,19 +73,53 @@
     <Compile Include="BL\ISwitchable.cs" />
     <Compile Include="BL\Switcher.cs" />
     <Compile Include="DB\DBElokuvat.cs" />
+    <Compile Include="Menu\AddMovie.xaml.cs">
+      <DependentUpon>AddMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Menu\Mainmenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\ModifyMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\MovieManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\MovieSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\ShowMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageSwitcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu\AddMovie.xaml.cs" />
-    <Compile Include="Menu\LogIn.xaml.cs" />
-    <Compile Include="Menu\Mainmenu.xaml.cs" />
-    <Compile Include="Menu\ModifyMovie.xaml.cs" />
-    <Compile Include="Menu\MovieManager.xaml.cs" />
-    <Compile Include="Menu\MovieSearch.xaml.cs" />
-    <Compile Include="Menu\ShowMovie.xaml.cs" />
+    <Compile Include="Menu\Mainmenu.xaml.cs">
+      <DependentUpon>Mainmenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ModifyMovie.xaml.cs">
+      <DependentUpon>ModifyMovie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\MovieManager.xaml.cs">
+      <DependentUpon>MovieManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\MovieSearch.xaml.cs">
+      <DependentUpon>MovieSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ShowMovie.xaml.cs">
+      <DependentUpon>ShowMovie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageSwitcher.xaml.cs">
       <DependentUpon>PageSwitcher.xaml</DependentUpon>
     </Compile>
