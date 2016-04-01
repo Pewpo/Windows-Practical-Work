@@ -21,11 +21,24 @@ namespace Movie.Menu
     /// </summary>
     public partial class ModifyMovie : UserControl, ISwitchable
     {
+        Movies current;
+        MovieReview curretmr;
         public ModifyMovie()
         {
             InitializeComponent();
+            IniMyStuff();
         }
+        
+        private  void IniMyStuff()
+        {
+            txtbName.Text = current.Name;
+            txtbGenre.Text = current.Genre;
+            txtbYear.Text = current.Year.ToString();
+            txtbDirector.Text = current.Director;
+            txtbComposer.Text = current.Composer;
+            
 
+        }
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
@@ -35,5 +48,12 @@ namespace Movie.Menu
         {
             Switcher.Switch(new MovieManager());
         }
+        public  void SetMovieInfo(Movies cur, MovieReview mod)
+        {
+            this.current = cur;
+            this.curretmr = mod;
+        }
+
     }
+
 }

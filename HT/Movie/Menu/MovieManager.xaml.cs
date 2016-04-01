@@ -20,8 +20,11 @@ namespace Movie.Menu
     /// <summary>
     /// Interaction logic for MovieManager.xaml
     /// </summary>
+ 
     public partial class MovieManager : UserControl, ISwitchable
     {
+        List<Movies> movies;
+        List<MovieReview> moviesrv;
         public MovieManager()
         {
             InitializeComponent();
@@ -31,9 +34,10 @@ namespace Movie.Menu
         {
             try
             {
-               DataTable dt = BLMain.GetData();
-                dgAllMovies.DataContext = dt.DefaultView;
-                lbMessages.Content = "Tiedostojen haku onnistui";
+                movies = BLMain.GetMovieData();
+                moviesrv = BLMain.GetReviewData();
+                lboxAllMovies.DataContext = movies;
+                lbMessages.Content = "Data taken from mysql server";
             }
             catch (Exception ex)
             {
@@ -58,7 +62,57 @@ namespace Movie.Menu
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ModifyMovie());
+            if (lboxAllMovies.SelectedItem != null)
+            {   // vaihdetaan sivua ja viedään samalla halutun olion tiedot toiselle leiskalle
+                Movies current = (Movies)lboxAllMovies.SelectedItem;
+                ModifyMovie ModMov = new ModifyMovie();
+                
+                foreach (MovieReview help in moviesrv)
+                {
+                    if (current.MovieId == help.Movieid)
+                    {
+                        ModMov.SetMovieInfo(current, help);
+                        Switcher.Switch(ModMov);
+                    }
+                }
+               
+            }
+            else
+            {
+                lbMessages.Content = "Select first movie for editing ";
+            }
+        }
+        //Poistetaan elokuva ja arvostelu
+        private void btnDeleteMovie_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Movies current = (Movies)lboxAllMovies.SelectedItem;
+          
+                var retval = MessageBox.Show("Do you realy want to delete movie : " + current.ToString(), "Movie software ask", MessageBoxButton.YesNo);
+                if (retval == MessageBoxResult.Yes)
+                {
+                        foreach(MovieReview help in moviesrv)
+                        {
+                            if(current.MovieId == help.Movieid)
+                            {
+                                bool answer =  BLMain.DeleteData(current.MovieId);
+                                if(answer == true)
+                                {
+                                lbMessages.Content = string.Format("Movie review : " + current.ToString() + "deleted");
+                                }
+                            }
+                        }               
+                }
+                else
+                {
+                    lbMessages.Content = "Something went wrong"; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

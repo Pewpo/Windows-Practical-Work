@@ -37,16 +37,37 @@ namespace Movie.Menu
             Switcher.Switch(new MovieManager());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnAddNewMovie_Click(object sender, RoutedEventArgs e)
         {
+            //Elokuvien lisäys
             try
             {
-
+                if (txtbName.Text != "" && txtbGenre.Text != "" && txtbYear.Text != null && txtbDirector.Text != "" && txtbReview.Text != "") {
+                int number =   BLMain.AddData(txtbName.Text, txtbGenre.Text, (Int32.Parse(txtbYear.Text)), txtbDirector.Text, txtbComposer.Text,
+                    txtbLink1.Text, txtbLink2.Text, txtbReview.Text);
+                    lbMessages.Content = string.Format("{0} Movie was added correctly!", number);
+                    CleanFields();
+                }
+                else
+                {
+                    MessageBox.Show("Fill all the cells!");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void CleanFields()
+        {
+            txtbName.Text = "";
+            txtbGenre.Text = "";
+            txtbYear.Text = "";
+            txtbDirector.Text = "";
+            txtbComposer.Text = "";
+            txtbLink1.Text = "";
+            txtbLink2.Text = "";
+            txtbReview.Text = "";
         }
     }
 }

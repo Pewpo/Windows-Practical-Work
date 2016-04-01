@@ -25,23 +25,23 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel  Width="350" Margin="100">
                 <TextBlock FontWeight="Bold"  Width="50">Name :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox x:Name="txtbName" Width="200"/>
                 <TextBlock FontWeight="Bold"  Width="50">Genre :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox  x:Name="txtbGenre" Width="200"/>
                 <TextBlock FontWeight="Bold"  Width="50">Year :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox  x:Name="txtbYear" Width="200"/>
                 <TextBlock FontWeight="Bold"  Width="50">Director :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox  x:Name="txtbDirector" Width="200"/>
                 <TextBlock FontWeight="Bold" Width="50">Composer :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox  x:Name="txtbComposer" Width="200"/>
                 <TextBlock FontWeight="Bold" Width="50">Link1 :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox  x:Name="txtbLink1" Width="200"/>
                 <TextBlock FontWeight="Bold" Width="50">Link2 :</TextBlock>
-                <TextBox Width="200"/>
+                <TextBox  x:Name="txtbLink2" Width="200"/>
 
             </StackPanel>
             <StackPanel  Width="350">
-                <Button Content="ADD" Margin="25,100,25,25" Height="50" Click="Button_Click"/>
+                <Button x:Name="btnAddNewMovie" Content="ADD" Margin="25,100,25,25" Height="50" Click="btnAddNewMovie_Click" />
                 <Button x:Name="btnBackToManager" Content="BACK" Height="50" Margin="25,0,25,25" Click="btnBackToManager_Click"/>
 
             </StackPanel>

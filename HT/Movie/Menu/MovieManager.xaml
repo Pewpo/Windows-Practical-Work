@@ -23,11 +23,11 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <DataGrid x:Name="dgAllMovies" Width="350" Margin="100"  AutoGenerateColumns="True" ItemsSource="{Binding}"/>
+            <ListBox x:Name="lboxAllMovies" Width="350" Margin="100"  ItemsSource="{Binding}"/>
             <StackPanel x:Name="btnAddMovie" Width="350">
                 <Button Content="ADD" Margin="25,100,25,25" Height="80" Click="Button_Click"/>
-                <Button Content="DELETE" Height="80" Margin="25,0,25,25"/>
-                <Button Content="MODIFY"  Height="80" Margin="25,0,25,25" Click="Button_Click_1"/>
+                <Button x:Name="btnDeleteMovie" Content="DELETE" Height="80" Margin="25,0,25,25" Click="btnDeleteMovie_Click"/>
+                <Button x:Name="btnModifyMovie" Content="MODIFY"  Height="80" Margin="25,0,25,25" Click="Button_Click_1"/>
                 <Button x:Name="btnBackToMain" Content="BACK" Height="80" Margin="25,0,25,25" Click="btnBackToMain_Click"/>
             </StackPanel>
         </StackPanel>

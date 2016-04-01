@@ -22,6 +22,7 @@ namespace Movie.Menu
     /// </summary>
     public partial class MovieSearch : UserControl, ISwitchable
     {
+        List<Movies> movies;
         public MovieSearch()
         {
             InitializeComponent();
@@ -32,8 +33,8 @@ namespace Movie.Menu
         {
             try
             {
-                DataTable dt = BLMain.GetData();
-                dgAllMovies.DataContext = dt.DefaultView;
+                movies = BLMain.GetMovieData();
+                dgAllMovies.DataContext = movies;
                 lbMessages.Content = "Tiedostojen haku onnistui";
             }
             catch (Exception ex)
