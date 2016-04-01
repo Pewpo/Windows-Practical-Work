@@ -25,14 +25,14 @@ namespace Movie.Menu
         public MovieManager()
         {
             InitializeComponent();
-            //IniMyStuff();
+            IniMyStuff();
         }
         private void IniMyStuff()
         {
             try
             {
                DataTable dt = BLMain.GetData();
-                dgAllMovies.ItemsSource = dt.DefaultView;
+                dgAllMovies.DataContext = dt.DefaultView;
                 lbMessages.Content = "Tiedostojen haku onnistui";
             }
             catch (Exception ex)

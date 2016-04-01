@@ -36,5 +36,17 @@ namespace Movie.Menu
         {
             Switcher.Switch(new MovieManager());
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

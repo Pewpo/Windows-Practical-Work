@@ -41,10 +41,14 @@
 
             </StackPanel>
             <StackPanel  Width="350">
-                <Button Content="ADD" Margin="25,100,25,25" Height="50"/>
+                <Button Content="ADD" Margin="25,100,25,25" Height="50" Click="Button_Click"/>
                 <Button x:Name="btnBackToManager" Content="BACK" Height="50" Margin="25,0,25,25" Click="btnBackToManager_Click"/>
 
             </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="0,400,140,0" Orientation="Vertical">
+            <TextBlock FontWeight="Bold" Text="Review :" Width="100" Margin="0,0,400,0"/> 
+            <TextBox x:Name="txtbReview" Width="500" Height="200"/>
         </StackPanel>
         <StackPanel  VerticalAlignment="Bottom">
             <StatusBar>

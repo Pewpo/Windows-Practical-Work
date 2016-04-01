@@ -23,14 +23,14 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <DataGrid x:Name="dgAllMovies" Width="350" Margin="100"/>
+            <DataGrid x:Name="dgAllMovies" Width="350" Margin="100" ItemsSource="{Binding}"/>
             <StackPanel  Width="170" Orientation="Vertical">
-                <Button x:Name="btnAddToList" Content="ADD TO LIST" Margin="0,150,0,25" Height="50"  Width="150" />
+                <Button x:Name="btnAddToList" Content="ADD TO LIST" Margin="0,150,0,25" Height="50"  Width="150" Click="btnAddToList_Click" />
                 <Button x:Name="btnRandomGenerate" Content="RANDOM GENERATE" Margin="0,0,0,0" Height="50"  Width="150"/>
             </StackPanel>
             <StackPanel  Width="170" Orientation="Vertical">
                 <Button x:Name="btnShow" Content="SHOW" Margin="0,150,0,25" Height="50"  Width="150" Click="btnShow_Click" />
-                <Button x:Name="btnBackTo" Content="BACK" Margin="0,0,0,0" Height="50"  Width="150"/>
+                <Button x:Name="btnBackTo" Content="BACK" Margin="0,0,0,0" Height="50"  Width="150" Click="btnBackTo_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="550,0,100,100">
