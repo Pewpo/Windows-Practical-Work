@@ -60,28 +60,7 @@ namespace Movie.Menu
             Switcher.Switch(new Mainmenu());
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (lboxAllMovies.SelectedItem != null)
-            {   // vaihdetaan sivua ja viedään samalla halutun olion tiedot toiselle leiskalle
-                Movies current = (Movies)lboxAllMovies.SelectedItem;
-                ModifyMovie ModMov = new ModifyMovie();
-                
-                foreach (MovieReview help in moviesrv)
-                {
-                    if (current.MovieId == help.Movieid)
-                    {
-                        ModMov.SetMovieInfo(current, help);
-                        Switcher.Switch(ModMov);
-                    }
-                }
-               
-            }
-            else
-            {
-                lbMessages.Content = "Select first movie for editing ";
-            }
-        }
+
         //Poistetaan elokuva ja arvostelu
         private void btnDeleteMovie_Click(object sender, RoutedEventArgs e)
         {
@@ -112,6 +91,29 @@ namespace Movie.Menu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnModifyMovie_Click(object sender, RoutedEventArgs e)
+        {
+            if (lboxAllMovies.SelectedItem != null)
+            {   // vaihdetaan sivua ja viedään samalla halutun olion tiedot toiselle leiskalle
+                Movies current = (Movies)lboxAllMovies.SelectedItem;
+                ModifyMovie ModMov = new ModifyMovie();
+
+                foreach (MovieReview help in moviesrv)
+                {
+                    if (current.MovieId == help.Movieid)
+                    {
+                        ModMov.SetMovieInfo(current, help);
+                        Switcher.Switch(ModMov);
+                    }
+                }
+
+            }
+            else
+            {
+                lbMessages.Content = "Select first movie for editing ";
             }
         }
     }

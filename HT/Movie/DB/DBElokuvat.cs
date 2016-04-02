@@ -55,6 +55,38 @@ namespace Movie.DB
                 throw ex;
             }
         }
+        public static int UpdateData(string connStr, Movies movie, MovieReview movierv)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = string.Format("UPDATE elokuva SET nimi = @NimiAtr, genre = @GengeAtr , julkaisuvuosi =  @JulkaisuvuosiAtr, ohjaaja = @OhjaajaAtr , saveltaja = @SaveltajaAtr WHERE id ={0}", movie.MovieId);
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@NimiAtr", movie.Name);
+                    cmd.Parameters.AddWithValue("@GengeAtr", movie.Genre);
+                    cmd.Parameters.AddWithValue("@JulkaisuvuosiAtr", movie.Year);
+                    cmd.Parameters.AddWithValue("@OhjaajaAtr", movie.Director);
+                    cmd.Parameters.AddWithValue("@SaveltajaAtr", movie.Composer);
+                    int number = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Open();
+                    sql = string.Format("UPDATE arvostelu SET arvosteluteksti = @ArvostelutekstiAtr, linkki1 =  @Linkki1Atr, linkki2 =  @linkki2Atr WHERE elokuva_id ={0}", movie.MovieId);
+                    MySqlCommand cmd2 = new MySqlCommand(sql, conn);
+                    cmd2.Parameters.AddWithValue("@ArvostelutekstiAtr", movierv.Reviewtext);
+                    cmd2.Parameters.AddWithValue("@Linkki1Atr", movierv.Link1);
+                    cmd2.Parameters.AddWithValue("@linkki2Atr", movierv.Link2);
+                    cmd2.ExecuteNonQuery();
+                    conn.Close();
+                    return number;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #region ADD DATA
         //lisätään elokuva sekä arvostelu tauluihin halutut tiedot
         public static int AddData(string connStr, Movies movie, MovieReview review)  
@@ -125,5 +157,39 @@ namespace Movie.DB
             }
         }
         #endregion DELETE FUNCTIONS
+        public static bool CheckLogIn(string username, string password, string connStr)
+        {
+            try
+            {
+                bool help = false;
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = string.Format("SELECT id,tunnus,salasana FROM arvostelija WHERE tunnus = '{0}' AND salasana ='{1}'",username ,password);
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    //tarkistetaan löytyykö kannasta
+                    while (dr.Read())
+                    {
+                        if (dr.HasRows == true)
+                        {
+                            help = true;
+                            BLMain.SetViewer(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                        }
+                        else
+                        {
+                            help = false;
+                        }
+                    }
+                    conn.Close();
+                }
+                return help;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

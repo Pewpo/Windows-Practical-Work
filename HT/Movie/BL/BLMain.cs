@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using Movie.DB;
 
 namespace Movie.BL
-{
+{   
     class BLMain
     {
+        public static Viewer current;
         private static string cs = Movie.Properties.Settings.Default.Elokuva;
         //haetaan elokuva tualun tiedot movie olioon
         public static List<Movies> GetMovieData()
@@ -33,6 +34,20 @@ namespace Movie.BL
              }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+        //Haetaan henkilön tiedot
+        public static bool CheckLogIn(string username, string password)
+        {
+            try
+            {
+              bool help =  DBElokuvat.CheckLogIn(username, password, cs);
+                return help;
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }
@@ -60,13 +75,26 @@ namespace Movie.BL
                 throw ex;
             }
         }
+        public static int UpdateData(Movies movie, MovieReview movierv)
+        {
+            try
+            {
+               int number = DBElokuvat.UpdateData(cs, movie, movierv);
+               return number;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         #region ADD DATA
         public static int AddData( string name, string genre, int year, string director, string composer, string link1, string link2, string review )
         {
             try
             {
                 Movies newMovie = new Movies(name, genre, year, director, composer);
-                MovieReview newMovieReview = new MovieReview(review, link1);
+                MovieReview newMovieReview = new MovieReview(current.Id, review, link1, link2);
                 int number = DBElokuvat.AddData(cs, newMovie, newMovieReview);
                 return number;
             }
@@ -97,5 +125,9 @@ namespace Movie.BL
             }
         }
         #endregion DELETE DATA
+        public static void SetViewer(int id, string username, string password)
+        {
+            current = new Viewer(id, username, password);        
+        }
     }
 }

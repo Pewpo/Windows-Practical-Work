@@ -76,6 +76,7 @@
     <Compile Include="BL\ISwitchable.cs" />
     <Compile Include="BL\Movies.cs" />
     <Compile Include="BL\Switcher.cs" />
+    <Compile Include="BL\Viewer.cs" />
     <Compile Include="DB\DBElokuvat.cs" />
     <Compile Include="Menu\AddMovie.xaml.cs">
       <DependentUpon>AddMovie.xaml</DependentUpon>

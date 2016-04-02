@@ -23,32 +23,32 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <StackPanel  Width="350" Margin="100">
+            <StackPanel  Width="350" Margin="100" x:Name="spMovieInfo">
                 <TextBlock FontWeight="Bold"  Width="50">Name :</TextBlock>
-                <TextBox x:Name="txtbName"   Width="200"/>
+                <TextBox x:Name="txtbName"   Width="200" Text="{Binding Path=Name }" MaxLength="43"/>
                 <TextBlock FontWeight="Bold"  Width="50">Genre :</TextBlock>
-                <TextBox  x:Name="txtbGenre"   Width="200"/>
+                <TextBox  x:Name="txtbGenre"   Width="200" Text="{Binding Path=Genre }" MaxLength="43" />
                 <TextBlock FontWeight="Bold"  Width="50">Year :</TextBlock>
-                <TextBox x:Name="txtbYear" Width="200"/>
+                <TextBox x:Name="txtbYear" Width="200" Text="{Binding Path=Year }" MaxLength="44"/>
                 <TextBlock FontWeight="Bold"  Width="50">Director :</TextBlock>
-                <TextBox x:Name="txtbDirector" Width="200"/>
+                <TextBox x:Name="txtbDirector" Width="200" Text="{Binding Path=Director }" MaxLength="43" />
                 <TextBlock FontWeight="Bold" Width="50">Composer :</TextBlock>
-                <TextBox x:Name="txtbComposer" Width="200"/>
+                <TextBox x:Name="txtbComposer" Width="200" Text="{Binding Path=Composer }" MaxLength="43" />
                 <TextBlock FontWeight="Bold" Width="50">Link1 :</TextBlock>
-                <TextBox x:Name="txtbLink1" Width="200"/>
+                <TextBox x:Name="txtbLink1" Width="200" MaxLength="128" Text="{Binding   Path=Link1}" />
                 <TextBlock FontWeight="Bold" Width="50">Link2 :</TextBlock>
-                <TextBox x:Name="txtbLink2" Width="200"/>
+                <TextBox x:Name="txtbLink2" Width="200" MaxLength="128" Text="{Binding Path=Link2}" />
 
             </StackPanel>
             <StackPanel  Width="350">
-                <Button x:Name="btnSaveModified" Content="SAVE" Margin="25,100,25,25" Height="50"/>
+                <Button x:Name="btnSaveModified" Content="SAVE" Margin="25,100,25,25" Height="50" Click="btnSaveModified_Click"/>
                 <Button x:Name="btnBackToManager" Content="BACK" Height="50" Margin="25,0,25,25" Click="btnBackToManager_Click"/>
 
             </StackPanel>
         </StackPanel>
-        <StackPanel Margin="0,400,140,0" Orientation="Vertical">
+        <StackPanel Margin="0,400,140,0" Orientation="Vertical" x:Name="spReview">
             <TextBlock FontWeight="Bold" Text="Review :" Width="100" Margin="0,0,400,0"/>
-            <TextBox x:Name="txtbReview" Width="500" Height="200"/>
+            <TextBox x:Name="txtbReview" Width="500" Height="200" Text="{Binding Path=Reviewtext}" TextWrapping="Wrap" MaxLength="1450" />
         </StackPanel>
         <StackPanel  VerticalAlignment="Bottom">
             <StatusBar>

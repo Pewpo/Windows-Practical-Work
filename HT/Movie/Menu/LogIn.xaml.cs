@@ -32,7 +32,25 @@ namespace Movie.Menu
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Mainmenu());
+            try
+            {
+                if (txtbUsername.Text != "" && pswbPassword.Password != "")
+                {
+                   bool help = BLMain.CheckLogIn(txtbUsername.Text, pswbPassword.Password);
+                    if (help == true)
+                    {                    
+                        Switcher.Switch( new Mainmenu());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

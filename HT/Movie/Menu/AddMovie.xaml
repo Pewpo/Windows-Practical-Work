@@ -25,19 +25,19 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel  Width="350" Margin="100">
                 <TextBlock FontWeight="Bold"  Width="50">Name :</TextBlock>
-                <TextBox x:Name="txtbName" Width="200"/>
+                <TextBox x:Name="txtbName" Width="200" MaxLength="43"/>
                 <TextBlock FontWeight="Bold"  Width="50">Genre :</TextBlock>
-                <TextBox  x:Name="txtbGenre" Width="200"/>
+                <TextBox  x:Name="txtbGenre" Width="200" MaxLength="43"/>
                 <TextBlock FontWeight="Bold"  Width="50">Year :</TextBlock>
-                <TextBox  x:Name="txtbYear" Width="200"/>
+                <TextBox  x:Name="txtbYear" Width="200" MaxLength="4"/>
                 <TextBlock FontWeight="Bold"  Width="50">Director :</TextBlock>
-                <TextBox  x:Name="txtbDirector" Width="200"/>
+                <TextBox  x:Name="txtbDirector" Width="200" MaxLength="43"/>
                 <TextBlock FontWeight="Bold" Width="50">Composer :</TextBlock>
-                <TextBox  x:Name="txtbComposer" Width="200"/>
+                <TextBox  x:Name="txtbComposer" Width="200" MaxLength="43" />
                 <TextBlock FontWeight="Bold" Width="50">Link1 :</TextBlock>
-                <TextBox  x:Name="txtbLink1" Width="200"/>
+                <TextBox  x:Name="txtbLink1" Width="200" MaxLength="128"/>
                 <TextBlock FontWeight="Bold" Width="50">Link2 :</TextBlock>
-                <TextBox  x:Name="txtbLink2" Width="200"/>
+                <TextBox  x:Name="txtbLink2" Width="200" MaxLength="128"/>
 
             </StackPanel>
             <StackPanel  Width="350">
@@ -47,8 +47,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="0,400,140,0" Orientation="Vertical">
-            <TextBlock FontWeight="Bold" Text="Review :" Width="100" Margin="0,0,400,0"/> 
-            <TextBox x:Name="txtbReview" Width="500" Height="200"/>
+            <TextBlock FontWeight="Bold" Text="Review :" Width="100" Margin="0,0,400,0"/>
+            <TextBox x:Name="txtbReview" Width="500" Height="200" TextWrapping="Wrap"  MaxLength="1450"/>
         </StackPanel>
         <StackPanel  VerticalAlignment="Bottom">
             <StatusBar>

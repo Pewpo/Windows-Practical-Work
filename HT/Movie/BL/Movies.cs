@@ -88,13 +88,21 @@ namespace Movie.BL
         private string link1;
         private string link2;
         #region CONSTRUCTORS
-        public MovieReview( string reviewText, string link1)
+    /*    public MovieReview(int reviewerid,  string reviewText, string link1)
         {
-            this.reviewerId = 1;
+            this.reviewerId = reviewerid;
             this.movieId = 0;
             this.reviewText = reviewText;
             this.link1 = link1;
             this.link2 = "";
+        }*/
+        public MovieReview(int reviewerid, string reviewText, string link1, string link2)
+        {
+            this.reviewerId = reviewerid;
+            this.movieId = 0;
+            this.reviewText = reviewText;
+            this.link1 = link1;
+            this.link2 = link2;
         }
         public MovieReview()
         {
