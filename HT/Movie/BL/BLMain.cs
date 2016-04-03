@@ -51,6 +51,18 @@ namespace Movie.BL
                 throw ex;
             }
         }
+        public static bool RegisterNewViewer(string username, string password)
+        {
+            try
+            {
+                bool answer = DBElokuvat.RegisterNewViewer(cs, username, password);
+                return answer;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         //haetaan arvostelu tiedot movierv olioon
         public static List<MovieReview> GetReviewData()
         {

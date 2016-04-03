@@ -157,6 +157,8 @@ namespace Movie.DB
             }
         }
         #endregion DELETE FUNCTIONS
+        #region REGISTER/LOGIN
+        //Kirjautumisen tarkistus
         public static bool CheckLogIn(string username, string password, string connStr)
         {
             try
@@ -181,6 +183,7 @@ namespace Movie.DB
                             help = false;
                         }
                     }
+                    dr.Close();
                     conn.Close();
                 }
                 return help;
@@ -191,5 +194,56 @@ namespace Movie.DB
                 throw ex;
             }
         }
+        //uuden käyttäjän rekisteröinti
+        public static bool RegisterNewViewer(string connStr, string username, string password)
+        {
+            try
+            {
+                bool AllreadyExists = false;
+                bool help = false;
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = string.Format("SELECT tunnus FROM arvostelija WHERE tunnus = '{0}'", username);
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    
+                    //tarkistetaan löytyykö kannasta
+                    while (dr.Read())
+                    {
+                        if (dr.HasRows == true)
+                        {
+                            help = true;
+                        }
+                        else
+                        {
+                            help = false;
+                        }
+                    }
+                    dr.Close();
+                    if (help == true)
+                    {
+                        AllreadyExists = true;
+                    }
+                    else
+                    {   //Käyttäjää ei vielä ole --> lisätään se
+                        AllreadyExists = false;
+                        string sql2 = string.Format("INSERT INTO arvostelija(tunnus, salasana) VALUES (@TunnusAtr, @SalasanaAtr)");
+                        MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+                        cmd2.Parameters.AddWithValue("@TunnusAtr", username);
+                        cmd2.Parameters.AddWithValue("@SalasanaAtr", password);
+                        cmd2.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+                return AllreadyExists;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion REGISTER/LOGIN
+
     }
 }

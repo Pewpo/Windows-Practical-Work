@@ -100,6 +100,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menu\RegisterViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menu\ShowMovie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +125,9 @@
     </Compile>
     <Compile Include="Menu\MovieSearch.xaml.cs">
       <DependentUpon>MovieSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\RegisterViewer.xaml.cs">
+      <DependentUpon>RegisterViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menu\ShowMovie.xaml.cs">
       <DependentUpon>ShowMovie.xaml</DependentUpon>

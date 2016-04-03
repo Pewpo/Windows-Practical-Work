@@ -53,10 +53,7 @@ namespace Movie.Menu
             lbMessages.Content = string.Format("{0} movie is updated", number);
             MessageBox.Show("Update managed");
         }
-        private void SetInfo()
-        {
 
-        }
     }
 
 }

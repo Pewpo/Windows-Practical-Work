@@ -24,7 +24,7 @@
                 <TextBox Margin="0,20,0,0" x:Name="txtbUsername" Width="300" Height="40"  FontSize="20"  Text="Username"  />
                 <PasswordBox x:Name="pswbPassword"  Width="300" Height="40" Margin="0,20,0,0"  FontSize="20"/>
                 <Button  x:Name="btnLogin" HorizontalAlignment="Center" Width="175" Height="50" Content="Log In" Margin="0,20,0,0" Click="btnLogin_Click"   />
-                <Button x:Name="btnRegister" HorizontalAlignment="Center" Width="175" Height="50" Content="Register" Margin="0,20,0,0"/>
+                <Button x:Name="btnRegister" HorizontalAlignment="Center" Width="175" Height="50" Content="Register" Margin="0,20,0,0" Click="btnRegister_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel  VerticalAlignment="Bottom">

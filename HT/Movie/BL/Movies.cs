@@ -14,6 +14,7 @@ namespace Movie.BL
         private string  director;
         private string composer;
         private int movieid;
+        
         #region CONSTRUCTORS
         public Movies(string name, string genre, int year, string director, string composer)
         {

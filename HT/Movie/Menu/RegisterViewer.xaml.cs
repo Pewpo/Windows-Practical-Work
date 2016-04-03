@@ -10,56 +10,58 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Movie.BL;
 
 namespace Movie.Menu
 {
     /// <summary>
-    /// Interaction logic for LogIn.xaml
+    /// Interaction logic for RegisterViewer.xaml
     /// </summary>
-    public partial class LogIn : UserControl, ISwitchable
+    public partial class RegisterViewer : UserControl, ISwitchable
     {
-        public LogIn()
+        public RegisterViewer()
         {
             InitializeComponent();
         }
 
+
+
+        private void btnBackToLogIn_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new LogIn());
+        }
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
         }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        // rekisteröidään uusikäyttäjä jos ei jo ole
+        private void btnRegisterNew_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (txtbUsername.Text != "" && pswbPassword.Password != "")
+                if (pswbSetPassword1.Password == pswbSetPassword2.Password)
                 {
-                   bool help = BLMain.CheckLogIn(txtbUsername.Text, pswbPassword.Password);
-                    if (help == true)
-                    {                    
-                        Switcher.Switch( new Mainmenu());
+                  bool answer =  BLMain.RegisterNewViewer(txtbSetUsername.Text, pswbSetPassword1.Password);
+                  if(answer == false)
+                    {
+                        lbMessages.Content = "New user created";
                     }
                     else
                     {
-                        MessageBox.Show("Invalid username or password");
+                        lbMessages.Content = "Username allready exist";
                     }
                 }
                 else
                 {
-                    lbMessages.Content = "Set first username and password!";
+                    lbMessages.Content = "your passwords are incorrect";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
-        {
-            Switcher.Switch(new RegisterViewer());
         }
     }
 }

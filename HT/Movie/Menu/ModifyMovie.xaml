@@ -34,9 +34,9 @@
                 <TextBox x:Name="txtbDirector" Width="200" Text="{Binding Path=Director }" MaxLength="43" />
                 <TextBlock FontWeight="Bold" Width="50">Composer :</TextBlock>
                 <TextBox x:Name="txtbComposer" Width="200" Text="{Binding Path=Composer }" MaxLength="43" />
-                <TextBlock FontWeight="Bold" Width="50">Link1 :</TextBlock>
+                <TextBlock FontWeight="Bold" Width="70">Video link :</TextBlock>
                 <TextBox x:Name="txtbLink1" Width="200" MaxLength="128" Text="{Binding   Path=Link1}" />
-                <TextBlock FontWeight="Bold" Width="50">Link2 :</TextBlock>
+                <TextBlock FontWeight="Bold" Width="70">Image link :</TextBlock>
                 <TextBox x:Name="txtbLink2" Width="200" MaxLength="128" Text="{Binding Path=Link2}" />
 
             </StackPanel>

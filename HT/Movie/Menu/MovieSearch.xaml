@@ -23,10 +23,10 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <DataGrid x:Name="dgAllMovies" Width="350" Margin="100" ItemsSource="{Binding}"/>
+            <ListBox x:Name="lboxAllMovies2" Width="350" Margin="100" ItemsSource="{Binding}"/>
             <StackPanel  Width="170" Orientation="Vertical">
                 <Button x:Name="btnAddToList" Content="ADD TO LIST" Margin="0,150,0,25" Height="50"  Width="150" Click="btnAddToList_Click" />
-                <Button x:Name="btnRandomGenerate" Content="RANDOM GENERATE" Margin="0,0,0,0" Height="50"  Width="150"/>
+                <Button x:Name="btnRandomGenerate" Content="RANDOM GENERATE" Margin="0,0,0,0" Height="50"  Width="150" Click="btnRandomGenerate_Click"/>
             </StackPanel>
             <StackPanel  Width="170" Orientation="Vertical">
                 <Button x:Name="btnShow" Content="SHOW" Margin="0,150,0,25" Height="50"  Width="150" Click="btnShow_Click" />
