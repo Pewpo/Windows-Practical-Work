@@ -142,7 +142,7 @@ namespace Movie.BL
         {
             current = new Viewer(id, username, password);        
         }
-        public static bool SaveToTextfile(List<Movies> mylistmovies)
+        public static string SaveToTextfile(List<Movies> mylistmovies)
         {
             try
             {
@@ -152,11 +152,17 @@ namespace Movie.BL
                     int help = mylistmovies.Count;
                     for (int i = 0; i < help; i++)
                     {
-                        sw.WriteLine("Number " + i + ":  Movie:" + mylistmovies[i].Name);
-                    }
-                    return true;
+                        sw.WriteLine("Number " + i + ":");
+                        sw.WriteLine("=================");
+                        sw.WriteLine("Movie :" + mylistmovies[i].Name);
+                        sw.WriteLine("Genre :" + mylistmovies[i].Genre);
+                        sw.WriteLine("Director :" + mylistmovies[i].Director);
+                        sw.WriteLine("Composer :" + mylistmovies[i].Composer);
+                        sw.WriteLine("Release year :" + mylistmovies[i].Year);
+                        sw.WriteLine("-----------------");
+                    }                  
                 }
-              
+                return filename;    
             }
             catch (Exception ex)
             {

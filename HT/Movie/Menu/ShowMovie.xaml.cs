@@ -44,38 +44,58 @@ public partial class ShowMovie : UserControl, ISwitchable
         }
         public void SetMovieInfo(Movies cur, MovieReview mod)
         {
-            this.current = cur;
-            this.curretmr = mod;
-
-            txtbMovieName.DataContext = cur;
-            txtbMovieText.DataContext = curretmr;
-            mediaElement.DataContext = curretmr;
-            //Lisätään image
-            if (curretmr.Link2 != "")
+            try
             {
-                var bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(curretmr.Link2);
-                bitmapImage.DecodePixelHeight = 300;
-                bitmapImage.DecodePixelWidth = 250;
-                bitmapImage.EndInit();
-                imgMovie.Source = bitmapImage;
+                this.current = cur;
+                this.curretmr = mod;
+
+                txtbMovieName.DataContext = cur;
+                txtbMovieText.DataContext = curretmr;
+                mediaElement.DataContext = curretmr;
+                //Lisätään image
+                if (curretmr.Link2 != "")
+                {
+                    var bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.UriSource = new Uri(curretmr.Link2);
+                    bitmapImage.DecodePixelHeight = 300;
+                    bitmapImage.DecodePixelWidth = 250;
+                    bitmapImage.EndInit();
+                    imgMovie.Source = bitmapImage;
+                }
+                else
+                {
+                    imgMovie.Source = null;
+                }
+                StartVideo(mod.Link1);
             }
-            else
+            catch (Exception ex)
             {
-               imgMovie.Source =  null;
+
+                MessageBox.Show(ex.Message);
             }
-
-      /* NÄILLÄ SAA KYLLÄ MP4 VIDEOT URLIN KAUTTA NÄKYVIIN    
-      mediaElement.MediaFailed += MyMediaElement_MediaFailed;
-            mediaElement.LoadedBehavior = MediaState.Play;
-            mediaElement.Source =   new Uri(@"https://www.youtube.com/watch?v=DPEJB-FCItk.mp4");
-            */
-
+    
         }
-   /*     void MyMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+      void MyMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            MessageBox.Show(e.ErrorException.Message);
-        }**/
+            MessageBox.Show("Unkown file directory! file must be .mp4");
+        }
+        public void StartVideo( string videoUrl)
+        {
+            try
+            {
+                if (videoUrl != null && videoUrl != "")
+                {
+                    mediaElement.MediaFailed += MyMediaElement_MediaFailed;
+                    mediaElement.LoadedBehavior = MediaState.Play;
+                    mediaElement.Source = new Uri(@"" + videoUrl + "");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

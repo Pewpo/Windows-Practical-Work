@@ -125,17 +125,15 @@ namespace Movie.Menu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            
-
+            }            
         }
         // Tulostetaan oma lista
         private void btnPrintMyList_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-               bool answer = BLMain.SaveToTextfile(mylistmovies);
-
+                string filename =   BLMain.SaveToTextfile(mylistmovies);
+                lbMessages.Content = "My movie list saved to : " + filename;
             }
             catch (Exception ex)
             {
