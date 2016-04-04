@@ -24,6 +24,7 @@ namespace Movie.Menu
     {
         List<Movies> movies;
         List<MovieReview> moviesrv;
+        List<Movies> mylistmovies = new List<Movies>();
         public MovieSearch()
         {
             InitializeComponent();
@@ -67,7 +68,7 @@ namespace Movie.Menu
             }
             else
             {
-                lbMessages.Content = "select first movie you want to view";
+                lbMessages.Content = "Select first movie you want to view";
             }
         }
 
@@ -75,10 +76,28 @@ namespace Movie.Menu
         {
             Switcher.Switch(new Mainmenu());
         }
-
+        //lisäään omaan listaan
         private void btnAddToList_Click(object sender, RoutedEventArgs e)
         {
-           
+            try
+            {             
+                if (lboxAllMovies2.SelectedItem != null)
+                {
+                    Movies current = (Movies)lboxAllMovies2.SelectedItem;
+                    mylistmovies.Add(current);
+                    lboxMyList.Items.Add(current);
+                    lbMessages.Content = "New movie added to Mylist";
+                }
+                else
+                {
+                    lbMessages.Content = "Select first movie you want to add";
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnRandomGenerate_Click(object sender, RoutedEventArgs e)
@@ -109,6 +128,19 @@ namespace Movie.Menu
             }
             
 
+        }
+        // Tulostetaan oma lista
+        private void btnPrintMyList_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+               bool answer = BLMain.SaveToTextfile(mylistmovies);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

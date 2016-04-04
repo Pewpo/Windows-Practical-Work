@@ -35,7 +35,8 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="550,0,100,100">
             <TextBlock TextAlignment="Center" Background="AliceBlue" FontSize="15">My List</TextBlock>
-            <ListBox Height="200"/>
+            <ListBox x:Name="lboxMyList" Height="200"  ItemsSource="{Binding}"/>
+            <Button x:Name="btnPrintMyList" Height="40"   Content="PRINT MY LIST" Click="btnPrintMyList_Click"/>
         </StackPanel>
         <StackPanel  VerticalAlignment="Bottom">
             <StatusBar>

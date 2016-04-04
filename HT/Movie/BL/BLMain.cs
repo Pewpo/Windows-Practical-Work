@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Movie.DB;
+using System.IO;
 
 namespace Movie.BL
 {   
@@ -140,6 +141,27 @@ namespace Movie.BL
         public static void SetViewer(int id, string username, string password)
         {
             current = new Viewer(id, username, password);        
+        }
+        public static bool SaveToTextfile(List<Movies> mylistmovies)
+        {
+            try
+            {
+                string filename = "D:\\MyMovies.txt";
+                using (StreamWriter sw = File.CreateText(filename))
+                {
+                    int help = mylistmovies.Count;
+                    for (int i = 0; i < help; i++)
+                    {
+                        sw.WriteLine("Number " + i + ":  Movie:" + mylistmovies[i].Name);
+                    }
+                    return true;
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
