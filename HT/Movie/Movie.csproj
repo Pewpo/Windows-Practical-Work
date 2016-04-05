@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="BL\BLMain.cs" />
     <Compile Include="BL\ISwitchable.cs" />
+    <Compile Include="BL\LogOut.cs" />
     <Compile Include="BL\Movies.cs" />
     <Compile Include="BL\Switcher.cs" />
     <Compile Include="BL\Viewer.cs" />
@@ -163,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Other\unknown.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

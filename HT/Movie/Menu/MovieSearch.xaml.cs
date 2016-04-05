@@ -39,12 +39,37 @@ namespace Movie.Menu
                 moviesrv = BLMain.GetReviewData();
                 lboxAllMovies2.DataContext = movies;
                 lbMessages.Content = "Data taken from mysql server";
+                FillMyCombo();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+        private void FillMyCombo()
+        {
+            try
+            {
+                var result = (from c in movies.AsEnumerable()
+                              select c.Genre).Distinct().ToList();
+                cbGenre.DataContext = result;              
+                var result2 = (from c in movies.AsEnumerable()
+                              select c.Year).Distinct().ToList();
+                cbYear.DataContext = result2;
+                var result3 = (from c in movies.AsEnumerable()
+                               select c.Director).Distinct().ToList();
+                cbDirector.DataContext = result3;
+                var result4 = (from c in movies.AsEnumerable()
+                               select c.Name).Distinct().ToList();
+                cbName.DataContext = result4;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
@@ -132,8 +157,75 @@ namespace Movie.Menu
         {
             try
             {
-                string filename =   BLMain.SaveToTextfile(mylistmovies);
-                lbMessages.Content = "My movie list saved to : " + filename;
+                if (mylistmovies.Count != 0)
+                {
+                    string filename = BLMain.SaveToTextfile(mylistmovies);
+                    lbMessages.Content = "My movie list saved to : " + filename;
+                }
+                else
+                {
+                    lbMessages.Content = "Select first some movies into the list that you want to save";
+                }
+           }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSettings.SelectedIndex == 1)
+            {
+                LogOut.LogOutNow();
+            }
+        }
+
+        private void cbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            try
+            {            
+                movies = BLMain.GetWantedData("genre", cbGenre.SelectedValue.ToString());
+                lboxAllMovies2.DataContext = movies;          
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                movies = BLMain.GetWantedData("julkaisuvuosi", cbYear.SelectedValue.ToString());
+                lboxAllMovies2.DataContext = movies;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbDirector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                movies = BLMain.GetWantedData("ohjaaja", cbDirector.SelectedValue.ToString());
+                lboxAllMovies2.DataContext = movies;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                movies = BLMain.GetWantedData("nimi", cbName.SelectedValue.ToString());
+                lboxAllMovies2.DataContext = movies;
             }
             catch (Exception ex)
             {
@@ -141,4 +233,5 @@ namespace Movie.Menu
             }
         }
     }
+
 }

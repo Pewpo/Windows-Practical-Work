@@ -18,7 +18,10 @@
         </Grid.Background>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                <ComboBox Width="150" Height="35" HorizontalAlignment="Right" Margin="0,10,25,0" />
+                <ComboBox x:Name="cmbSettings"  Width="150" Height="35" HorizontalAlignment="Right" Margin="0,10,25,0" SelectionChanged="cmbSettings_SelectionChanged" >
+                    <ComboBoxItem  IsSelected="True" >Settings</ComboBoxItem>
+                    <ComboBoxItem  >LogOut</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                 <TextBlock x:Name="txtbMovieName" Text="{Binding}"  FontSize="25" FontWeight="Bold"  />
@@ -27,7 +30,13 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal" Width="900" Height="400" Margin="50,100,0,0">
                 <Image x:Name="imgMovie" Width="250" Height="400"/>
-                <MediaElement x:Name="mediaElement" Width="500" Height="252"  Margin="100,0,0,0" LoadedBehavior="Manual"/>
+              <!--  <StackPanel> -->
+                    <MediaElement Visibility="Visible" x:Name="mediaElement" Width="500" Height="252"  Margin="100,0,0,0" LoadedBehavior="Manual"/>
+                  <!--  <Image Visibility ="Hidden" Width="250" x:Name="imgSwitch" Source="D:\Koulu\iio11300\repo\IIO11300\Windows-Practical-Work\HT\Movie\Other\unknown.png"  Margin="100,40,0,0"/> -->
+             <!--   </StackPanel> -->
+                
+
+
             </StackPanel>
             <StackPanel   >
                 <TextBox  x:Name="txtbMovieText" Width="849"   Height="100"  TextWrapping="Wrap" Foreground="#FFBFB6B6"   Text="{Binding Path=Reviewtext, Mode=OneWay}" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" >

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Movie.BL;
+using Path = System.IO.Path;
 
 namespace Movie.Menu
 {
@@ -20,6 +21,7 @@ namespace Movie.Menu
     /// </summary>
     public partial class Mainmenu : UserControl, ISwitchable
     {
+        List<MovieReview> moviesrv;
         public Mainmenu()
         {
             InitializeComponent();
@@ -27,8 +29,14 @@ namespace Movie.Menu
         }
         public void IniMyStuff()
         {
-            mediaElement.Source = new Uri("D:\\Koulu\\windows-harkka\\Coffeemaker.mp4");
+            string randmovie = GetRandomMovie();
+            mediaElement.Source = new Uri(randmovie);
             mediaElement.Play();
+           int id= BLMain.current.Id;
+           string name = BLMain.current.Username;
+            string p = BLMain.current.Password;
+            txtbWelcome.Text = "Welcome " + BLMain.current.Username + "!";
+          
         }
 
         public void UtilizeState(object state)
@@ -44,6 +52,31 @@ namespace Movie.Menu
         private void btnMovieManager_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MovieManager());
+        }
+
+        private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cmbSettings.SelectedIndex == 1)
+            {
+                LogOut.LogOutNow();
+            }
+        }
+        //VALITAAN RANDOM MOVIE TOISTETTAVAKSI
+        private string GetRandomMovie()
+        {
+            moviesrv = BLMain.GetReviewData();
+            int number = moviesrv.Count;
+            Random rand = new Random();
+            string extension = "";
+            int randnumber = 0;
+            while (extension != ".mp4")
+            {
+                randnumber = rand.Next(1, number);
+                extension = Path.GetExtension(moviesrv[randnumber].Link1); // tarkistetaan että video on .mp4
+            }
+            return moviesrv[randnumber].Link1;
+            
+
         }
     }
 }

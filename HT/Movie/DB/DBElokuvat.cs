@@ -11,13 +11,14 @@ namespace Movie.DB
 {
     class DBElokuvat
     {
+
         //haetaan elokuva taulun tiedot
         public static DataTable GetMovieData(string connStr)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
-                {          
+                {
                     string sql = "SELECT* FROM elokuva";
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -46,7 +47,7 @@ namespace Movie.DB
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable("Arvostelu");
                     da.Fill(dt);
-                    conn.Close();                  
+                    conn.Close();
                     return dt;
                 }
             }
@@ -89,7 +90,7 @@ namespace Movie.DB
         }
         #region ADD DATA
         //lisätään elokuva sekä arvostelu tauluihin halutut tiedot
-        public static int AddData(string connStr, Movies movie, MovieReview review)  
+        public static int AddData(string connStr, Movies movie, MovieReview review)
         {
             try
             {
@@ -145,8 +146,8 @@ namespace Movie.DB
                     cmd2.ExecuteNonQuery();
                     conn.Close();
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);                                     
-                    int number = cmd.ExecuteNonQuery();                                  
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    int number = cmd.ExecuteNonQuery();
                     conn.Close();
                     return number;
                 }
@@ -162,31 +163,63 @@ namespace Movie.DB
         public static bool CheckLogIn(string username, string password, string connStr)
         {
             try
-            {
-                bool help = false;
+            {/*
+                // TÄTÄ KÄYTETÄÄN SIIHEN PAREMPAAN SALAUKSEEN
+                bool PswExists = false;
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
-                    string sql = string.Format("SELECT id,tunnus,salasana FROM arvostelija WHERE tunnus = '{0}' AND salasana ='{1}'",username ,password);
+                    string sql = string.Format("SELECT salasana FROM arvostelija WHERE tunnus = '{0}'", username);
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader dr = cmd.ExecuteReader();
-                    //tarkistetaan löytyykö kannasta
                     while (dr.Read())
                     {
+                        Console.WriteLine("Taalla");
                         if (dr.HasRows == true)
                         {
-                            help = true;
-                            BLMain.SetViewer(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                            Console.WriteLine(password);
+                            Console.WriteLine(dr.GetString(0).ToString());
+
+                            PswExists = BLMain.VerifyCryptedPassword(dr.GetString(0).ToString(), password);
                         }
-                        else
-                        {
-                            help = false;
-                        }
+                        Console.WriteLine("nyt taalla");
                     }
                     dr.Close();
                     conn.Close();
                 }
-                return help;
+                //Jos salasanat vastaavat toisiaan voidaan jatkaa eteenpäin
+                if (PswExists == true)
+                {*/
+                bool help = false;
+                    using (MySqlConnection conn = new MySqlConnection(connStr))
+                    {
+                        string sql = string.Format("SELECT id,tunnus,salasana FROM arvostelija WHERE tunnus = '{0}' AND salasana ='{1}'", username, password);
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        //tarkistetaan löytyykö kannasta
+                        while (dr.Read())
+                        {
+                            if (dr.HasRows == true)
+                            {
+                                help = true;                                
+                                BLMain.SetViewer(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                            }
+                            else
+                            {
+                                help = false;
+                            }
+                        }
+                        dr.Close();
+                        conn.Close();
+                    }
+                    return help;
+                // TÄTÄ KÄYTETÄÄN SIIHEN PAREMPAAN SALAUKSEEN    
+                /*    } 
+                    else
+                    {
+                        return false;
+                    }*/
             }
             catch (Exception ex)
             {
@@ -244,6 +277,26 @@ namespace Movie.DB
             }
         }
         #endregion REGISTER/LOGIN
-
+        public static DataTable GetWantedData(string what, string wanted, string connStr)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = string.Format( "SELECT* FROM elokuva WHERE {0} = '{1}'", what, wanted);
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable("Elokuva");
+                    da.Fill(dt);
+                    conn.Close();
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

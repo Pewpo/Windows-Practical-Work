@@ -54,6 +54,13 @@ namespace Movie.Menu
             MessageBox.Show("Update managed");
         }
 
+        private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSettings.SelectedIndex == 1)
+            {
+                LogOut.LogOutNow();
+            }
+        }
     }
-
+   
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Movie.BL;
-
+using Path = System.IO.Path;
 
 namespace Movie.Menu
 {
@@ -76,25 +76,43 @@ public partial class ShowMovie : UserControl, ISwitchable
             }
     
         }
-      void MyMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-            MessageBox.Show("Unkown file directory! file must be .mp4");
-        }
         public void StartVideo( string videoUrl)
         {
+            string extension;
             try
             {
                 if (videoUrl != null && videoUrl != "")
                 {
-                    mediaElement.MediaFailed += MyMediaElement_MediaFailed;
-                    mediaElement.LoadedBehavior = MediaState.Play;
-                    mediaElement.Source = new Uri(@"" + videoUrl + "");
+                   // tarkastetaan että video on .mp4
+                    extension = Path.GetExtension(videoUrl);
+                    if(extension == ".mp4")
+                    {
+                         
+                    //    imgSwitch.Visibility = Visibility.Collapsed; 
+                   //     mediaElement.Visibility = Visibility.Visible; NÄILLÄ VOI LAITTAA UNKOWN KUVAN VIDEON TILALLE JOS EI OLE
+                        mediaElement.Source = new Uri(@"" + videoUrl + "");
+                        mediaElement.Play();
+                        lbMessages.Content = "Videos link : " + videoUrl;                 
+                    }
+                    else
+                    {
+                     //   mediaElement.Visibility = Visibility.Collapsed;
+                  //      imgSwitch.Visibility = Visibility.Visible;
+                        lbMessages.Content = "Videos link : " + videoUrl+".  It must be .mp4 format. ";
+                    }         
                 }
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+        }
+        private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSettings.SelectedIndex == 1)
+            {
+                LogOut.LogOutNow();
             }
         }
     }

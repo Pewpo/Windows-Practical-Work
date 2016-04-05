@@ -69,5 +69,12 @@ namespace Movie.Menu
             txtbLink2.Text = "";
             txtbReview.Text = "";
         }
+        private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cmbSettings.SelectedIndex == 1)
+            {
+                LogOut.LogOutNow();
+            }
+}
     }
 }

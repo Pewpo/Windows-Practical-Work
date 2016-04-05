@@ -43,14 +43,20 @@ namespace Movie.Menu
             {
                 if (pswbSetPassword1.Password == pswbSetPassword2.Password)
                 {
-                  bool answer =  BLMain.RegisterNewViewer(txtbSetUsername.Text, pswbSetPassword1.Password);
-                  if(answer == false)
+                    if (pswbSetPassword1.Password == txtbSetUsername.Text)
                     {
-                        lbMessages.Content = "New user created";
+                        lbMessages.Content = "Username and password cannot be same";
                     }
-                    else
-                    {
-                        lbMessages.Content = "Username allready exist";
+                    else {
+                        bool answer = BLMain.RegisterNewViewer(txtbSetUsername.Text, pswbSetPassword1.Password);
+                        if (answer == false)
+                        {
+                            lbMessages.Content = "New user created";
+                        }
+                        else
+                        {
+                            lbMessages.Content = "Username allready exist";
+                        }
                     }
                 }
                 else

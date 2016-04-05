@@ -75,10 +75,18 @@ namespace Movie.Menu
                         {
                             if(current.MovieId == help.Movieid)
                             {
-                                bool answer =  BLMain.DeleteData(current.MovieId);
-                                if(answer == true)
+                                //tarkistetaan vielä että muokattava arvostelu on henkilön oma tekemä
+                                if (help.Reviewerid == BLMain.current.Id)
                                 {
-                                lbMessages.Content = string.Format("Movie review : " + current.ToString() + "deleted");
+                                    bool answer = BLMain.DeleteData(current.MovieId);
+                                    if (answer == true)
+                                    {
+                                        lbMessages.Content = string.Format("Movie review : " + current.ToString() + "deleted");
+                                    }
+                                }
+                                else
+                                {
+                                     lbMessages.Content = "That's not your movie review. because of that you can't delete it.";
                                 }
                             }
                         }               
@@ -97,7 +105,10 @@ namespace Movie.Menu
         private void btnModifyMovie_Click(object sender, RoutedEventArgs e)
         {
             if (lboxAllMovies.SelectedItem != null)
-            {   // vaihdetaan sivua ja viedään samalla halutun olion tiedot toiselle leiskalle
+            {
+              
+            
+                // vaihdetaan sivua ja viedään samalla halutun olion tiedot toiselle leiskalle
                 Movies current = (Movies)lboxAllMovies.SelectedItem;
                 ModifyMovie ModMov = new ModifyMovie();
 
@@ -105,8 +116,16 @@ namespace Movie.Menu
                 {
                     if (current.MovieId == help.Movieid)
                     {
-                        ModMov.SetMovieInfo(current, help);
-                        Switcher.Switch(ModMov);
+                        //tarkistetaan vielä että muokattava arvostelu on henkilön oma tekemä
+                        if (help.Reviewerid == BLMain.current.Id)
+                        {
+                            ModMov.SetMovieInfo(current, help);
+                            Switcher.Switch(ModMov);
+                        }
+                        else
+                        {
+                            lbMessages.Content = "That's not your movie review. because of that you can't modify it.";
+                        }
                     }
                 }
 
@@ -114,6 +133,13 @@ namespace Movie.Menu
             else
             {
                 lbMessages.Content = "Select first movie for editing ";
+            }
+        }
+        private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSettings.SelectedIndex == 1)
+            {
+                LogOut.LogOutNow();
             }
         }
     }
