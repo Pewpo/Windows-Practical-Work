@@ -10,24 +10,18 @@
 
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF121517" Offset="0.93"/>
-                <GradientStop Color="#FF86C8FF" Offset="0.017"/>
-                <GradientStop Color="#FF4E7595" Offset="0.407"/>
-                <GradientStop Color="#FF092030" Offset="0.84"/>
-                <GradientStop Color="#FF285478" Offset="0.653"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/moviecurtain.jpg"/>
         </Grid.Background>
         <StackPanel Orientation="Vertical">
 
             <StackPanel>
          
-                <TextBlock TextAlignment="Center" FontSize="50" FontStyle="Italic" Margin="40" FontWeight="SemiBold" Text="Register"/>
-                <TextBlock TextAlignment="Center" FontSize="20" Text="Username :"/>
-                <TextBox Margin="0,0,0,0" x:Name="txtbSetUsername" Width="300" Height="40"  FontSize="20" />
-                <TextBlock TextAlignment="Center" FontSize="20" Text="Password :"/>
-                <PasswordBox x:Name="pswbSetPassword1"  Width="300" Height="40" Margin="0,0,0,0"  FontSize="20"/>
-                <TextBlock TextAlignment="Center" FontSize="20" Text="Password again :"/>
+                <TextBlock TextAlignment="Center" FontSize="50" FontStyle="Italic" Margin="40" Text="Register" Foreground="#FFDC7373"/>
+                <TextBlock TextAlignment="Center" FontSize="20" Text="Username :"  Foreground="#FFDC7373"/>
+                <TextBox Margin="0,0,0,0" x:Name="txtbSetUsername" Width="300" Height="40"  FontSize="20"   />
+                <TextBlock TextAlignment="Center" FontSize="20" Text="Password :"  Foreground="#FFDC7373"/>
+                <PasswordBox x:Name="pswbSetPassword1"  Width="300" Height="40" Margin="0,0,0,0"  FontSize="20" />
+                <TextBlock TextAlignment="Center" FontSize="20" Text="Password again :"  Foreground="#FFDC7373"/>
                 <PasswordBox x:Name="pswbSetPassword2"  Width="300" Height="40" Margin="0,0,0,0"  FontSize="20"/>
                 <Button  x:Name="btnRegisterNew" HorizontalAlignment="Center" Width="175" Height="50" Content="Register" Margin="0,20,0,0" Click="btnRegisterNew_Click"   />
                 <Button x:Name="btnBackToLogIn" HorizontalAlignment="Center" Width="175" Height="50" Content="Back" Margin="0,20,0,0" Click="btnBackToLogIn_Click"/>

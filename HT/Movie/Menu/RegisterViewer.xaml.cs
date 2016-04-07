@@ -25,9 +25,6 @@ namespace Movie.Menu
         {
             InitializeComponent();
         }
-
-
-
         private void btnBackToLogIn_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new LogIn());

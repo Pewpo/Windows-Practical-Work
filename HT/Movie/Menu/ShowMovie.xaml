@@ -8,13 +8,7 @@
             d:DesignHeight="700" d:DesignWidth="1000">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF121517" Offset="0.93"/>
-                <GradientStop Color="#FF86C8FF" Offset="0.017"/>
-                <GradientStop Color="#FF4E7595" Offset="0.407"/>
-                <GradientStop Color="#FF092030" Offset="0.84"/>
-                <GradientStop Color="#FF285478" Offset="0.653"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/moviecurtain.jpg"/>
         </Grid.Background>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
@@ -24,16 +18,16 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                <TextBlock x:Name="txtbMovieName" Text="{Binding}"  FontSize="25" FontWeight="Bold"  />
+                <TextBlock x:Name="txtbMovieName" Text="{Binding}"  FontStyle="Italic"   Foreground="#FFDC7373" FontSize="25" FontWeight="Bold"  />
             </StackPanel>
         </StackPanel>
         <StackPanel>
             <StackPanel Orientation="Horizontal" Width="900" Height="400" Margin="50,100,0,0">
                 <Image x:Name="imgMovie" Width="250" Height="400"/>
-              <!--  <StackPanel> -->
-                    <MediaElement Visibility="Visible" x:Name="mediaElement" Width="500" Height="252"  Margin="100,0,0,0" LoadedBehavior="Manual"/>
-                  <!--  <Image Visibility ="Hidden" Width="250" x:Name="imgSwitch" Source="D:\Koulu\iio11300\repo\IIO11300\Windows-Practical-Work\HT\Movie\Other\unknown.png"  Margin="100,40,0,0"/> -->
-             <!--   </StackPanel> -->
+              <StackPanel>
+                    <MediaElement Visibility="Collapsed" x:Name="mediaElement" Width="520" Height="280"  Margin="80,80,0,0" LoadedBehavior="Manual"/>
+                    <WebBrowser x:Name="wbSite" Visibility="Visible" Width="520" Height="280" Margin="80,80,0,0"/>
+                </StackPanel> 
                 
 
 

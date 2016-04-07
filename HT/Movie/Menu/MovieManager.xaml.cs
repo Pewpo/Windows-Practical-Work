@@ -30,7 +30,7 @@ namespace Movie.Menu
             InitializeComponent();
             IniMyStuff();
         }
-        private void IniMyStuff()
+       private void IniMyStuff()
         {
             try
             {
@@ -42,25 +42,20 @@ namespace Movie.Menu
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            
+            }           
         }
         void ISwitchable.UtilizeState(object state)
         {
             throw new NotImplementedException();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new AddMovie());
         }
-
         private void btnBackToMain_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Mainmenu());
         }
-
-
         //Poistetaan elokuva ja arvostelu
         private void btnDeleteMovie_Click(object sender, RoutedEventArgs e)
         {
@@ -101,13 +96,10 @@ namespace Movie.Menu
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnModifyMovie_Click(object sender, RoutedEventArgs e)
         {
             if (lboxAllMovies.SelectedItem != null)
-            {
-              
-            
+            {                       
                 // vaihdetaan sivua ja viedään samalla halutun olion tiedot toiselle leiskalle
                 Movies current = (Movies)lboxAllMovies.SelectedItem;
                 ModifyMovie ModMov = new ModifyMovie();

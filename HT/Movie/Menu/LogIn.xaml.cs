@@ -24,12 +24,10 @@ namespace Movie.Menu
         {
             InitializeComponent();
         }
-
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
         }
-
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -56,7 +54,6 @@ namespace Movie.Menu
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new RegisterViewer());

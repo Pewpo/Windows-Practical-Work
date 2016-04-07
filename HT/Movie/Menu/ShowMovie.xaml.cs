@@ -27,20 +27,14 @@ public partial class ShowMovie : UserControl, ISwitchable
         public ShowMovie()
         { 
             InitializeComponent();
-           // mediaElement.Source = new Uri("D:\\Koulu\\windows-harkka\\Coffeemaker.mp4");
-           // mediaElement.Play();
         }
-
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
         }
-
-
         private void btnBackToSearch_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MovieSearch());
-
         }
         public void SetMovieInfo(Movies cur, MovieReview mod)
         {
@@ -71,7 +65,6 @@ public partial class ShowMovie : UserControl, ISwitchable
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
     
@@ -87,24 +80,25 @@ public partial class ShowMovie : UserControl, ISwitchable
                     extension = Path.GetExtension(videoUrl);
                     if(extension == ".mp4")
                     {
-                         
-                    //    imgSwitch.Visibility = Visibility.Collapsed; 
-                   //     mediaElement.Visibility = Visibility.Visible; NÄILLÄ VOI LAITTAA UNKOWN KUVAN VIDEON TILALLE JOS EI OLE
+
+                        wbSite.Visibility = Visibility.Collapsed; 
+                        mediaElement.Visibility = Visibility.Visible;
                         mediaElement.Source = new Uri(@"" + videoUrl + "");
                         mediaElement.Play();
                         lbMessages.Content = "Videos link : " + videoUrl;                 
                     }
                     else
                     {
-                     //   mediaElement.Visibility = Visibility.Collapsed;
-                  //      imgSwitch.Visibility = Visibility.Visible;
-                        lbMessages.Content = "Videos link : " + videoUrl+".  It must be .mp4 format. ";
+                        mediaElement.Visibility = Visibility.Collapsed;
+                        wbSite.Visibility = Visibility.Visible;
+                        string lastPart = videoUrl.Split('=').Last();
+                        wbSite.Navigate(new Uri("http://student.labranet.jamk.fi/~H9577/WWW-palvelinohjelmointi/YoutubePlayer.php?param="+lastPart));                                 
+                        lbMessages.Content = "Videos link : " + videoUrl+".";
                     }         
                 }
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

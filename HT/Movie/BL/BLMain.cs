@@ -12,7 +12,6 @@ namespace Movie.BL
 {   
     class BLMain
     {
-
         public static Viewer current;
         private static string cs = Movie.Properties.Settings.Default.Elokuva;
         //haetaan elokuva tualun tiedot movie olioon
@@ -70,7 +69,6 @@ namespace Movie.BL
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -100,13 +98,6 @@ namespace Movie.BL
         Array.Copy(hash, 0, hashBytes, 16, 20);
         string savedPasswordHash = Convert.ToBase64String(hashBytes);
         return savedPasswordHash;*/
-
-
-        /*var md5 = new MD5CryptoServiceProvider();
-        byte[] byteArray = Encoding.ASCII.GetBytes(password);
-        var md5data = md5.ComputeHash(byteArray);               
-        return md5data;*/
-
 
         //            }
         //          catch (Exception ex)
@@ -229,8 +220,9 @@ namespace Movie.BL
         {
             try
             {
-              string path =  Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
-                string filename = string.Format("{0}\\desktop\\MyMovies.txt", path);
+            
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string filename = string.Format("{0}\\MyMovies.txt", path);
                 using (StreamWriter sw = File.CreateText(filename))
                 {
                     int help = mylistmovies.Count;

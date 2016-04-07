@@ -10,17 +10,11 @@
 
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF121517" Offset="0.93"/>
-                <GradientStop Color="#FF86C8FF" Offset="0.017"/>
-                <GradientStop Color="#FF4E7595" Offset="0.407"/>
-                <GradientStop Color="#FF092030" Offset="0.84"/>
-                <GradientStop Color="#FF285478" Offset="0.653"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/moviecurtain.jpg"/>
         </Grid.Background>
         <StackPanel Orientation="Vertical">
             <StackPanel>
-                <TextBlock TextAlignment="Center" FontSize="50" FontStyle="Italic" Margin="40" FontWeight="SemiBold" Text="Watchit!"/>
+                <TextBlock TextAlignment="Center" FontSize="50" FontStyle="Italic"  Margin="40" Text="Watchit!"  Foreground="#FFDC7373"/>
                 <TextBox Margin="0,20,0,0" x:Name="txtbUsername" Width="300" Height="40"  FontSize="20"  Text="Username"  />
                 <PasswordBox x:Name="pswbPassword"  Width="300" Height="40" Margin="0,20,0,0"  FontSize="20"/>
                 <Button  x:Name="btnLogin" HorizontalAlignment="Center" Width="175" Height="50" Content="Log In" Margin="0,20,0,0" Click="btnLogin_Click"   />

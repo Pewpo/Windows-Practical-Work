@@ -35,25 +35,20 @@ namespace Movie.Menu
            int id= BLMain.current.Id;
            string name = BLMain.current.Username;
             string p = BLMain.current.Password;
-            txtbWelcome.Text = "Welcome " + BLMain.current.Username + "!";
-          
+            txtbWelcome.Text = "Welcome " + BLMain.current.Username + "!";         
         }
-
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
         }
-
         private void btnSearchMovies_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MovieSearch());
-        }
-
+       }
         private void btnMovieManager_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MovieManager());
         }
-
         private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(cmbSettings.SelectedIndex == 1)

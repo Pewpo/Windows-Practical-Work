@@ -30,7 +30,6 @@ namespace Movie.Menu
             InitializeComponent();
             IniMyStuff();
         }
-
         private void IniMyStuff()
         {
             try
@@ -96,7 +95,6 @@ namespace Movie.Menu
                 lbMessages.Content = "Select first movie you want to view";
             }
         }
-
         private void btnBackTo_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Mainmenu());
@@ -124,7 +122,6 @@ namespace Movie.Menu
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnRandomGenerate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -179,7 +176,6 @@ namespace Movie.Menu
                 LogOut.LogOutNow();
             }
         }
-
         private void cbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -193,7 +189,6 @@ namespace Movie.Menu
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void cbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -206,7 +201,6 @@ namespace Movie.Menu
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void cbDirector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -219,7 +213,6 @@ namespace Movie.Menu
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void cbName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try

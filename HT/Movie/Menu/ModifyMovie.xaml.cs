@@ -25,8 +25,7 @@ namespace Movie.Menu
         MovieReview curretmr;
         public ModifyMovie()
         {
-            InitializeComponent();
-            
+            InitializeComponent();          
         }        
         public void UtilizeState(object state)
         {
@@ -46,14 +45,12 @@ namespace Movie.Menu
             txtbLink1.DataContext = curretmr;
             txtbLink2.DataContext = curretmr;      
         }
-
         private void btnSaveModified_Click(object sender, RoutedEventArgs e)
         {
            int number = BLMain.UpdateData(current, curretmr);
             lbMessages.Content = string.Format("{0} movie is updated", number);
             MessageBox.Show("Update managed");
         }
-
         private void cmbSettings_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbSettings.SelectedIndex == 1)

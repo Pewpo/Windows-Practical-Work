@@ -26,17 +26,14 @@ namespace Movie.Menu
         {
             InitializeComponent();
         }
-
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
         }
-
         private void btnBackToManager_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MovieManager());
         }
-
         private void btnAddNewMovie_Click(object sender, RoutedEventArgs e)
         {
             //Elokuvien lisäys
